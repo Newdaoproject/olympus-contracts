@@ -14,7 +14,7 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     const { deploy } = deployments;
     const { deployer } = await getNamedAccounts();
 
-    await deploy(CONTRACTS.bonDepo2, {
+    await deploy(CONTRACTS.bondDepo2, {
         from: deployer,
         args: [
             authority,
@@ -28,6 +28,6 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     });
 };
 
-func.tags = [CONTRACTS.bonDepo2, "migration"];
+func.tags = [CONTRACTS.bondDepo2, "migration"];
 
 export default func;
