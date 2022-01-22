@@ -13,6 +13,7 @@ export const CONTRACTS: Record<string, string> = {
     FRAX: "Frax",
     DAI: "DAI",
     lusdAllocator: "LUSDAllocator",
+    bondDepo2:"OlympusBondDepositoryV2",
 };
 
 // Constructor Arguments
