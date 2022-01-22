@@ -23,6 +23,7 @@ const chainIds = {
     mainnet: 1,
     rinkeby: 4,
     ropsten: 3,
+    mumbai: 80001,
 };
 
 // Ensure that we have all the environment variables we need.
@@ -31,7 +32,7 @@ const privateKey = process.env.PRIVATE_KEY ?? "NO_PRIVATE_KEY";
 const alchemyApiKey = process.env.ALCHEMY_API_KEY ?? "NO_ALCHEMY_API_KEY";
 
 function getChainConfig(network: keyof typeof chainIds): NetworkUserConfig {
-    const url = `https://eth-${network}.alchemyapi.io/v2/${alchemyApiKey}`;
+    const url = `https://polygon-mumbai.g.alchemy.com/v2/${alchemyApiKey}`;
     return {
         accounts: [`${privateKey}`],
         chainId: chainIds[network],
@@ -40,7 +41,7 @@ function getChainConfig(network: keyof typeof chainIds): NetworkUserConfig {
 }
 
 const config: HardhatUserConfig = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: "mumbai",
     gasReporter: {
         currency: "USD",
         enabled: process.env.REPORT_GAS ? true : false,
@@ -58,6 +59,7 @@ const config: HardhatUserConfig = {
         // mainnet: getChainConfig("mainnet"),
         // rinkeby: getChainConfig("rinkeby"),
         // ropsten: getChainConfig("ropsten"),
+        mumbai: getChainConfig("mumbai"),
     },
     paths: {
         artifacts: "./artifacts",
